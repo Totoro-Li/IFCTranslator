@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MaterialDesignThemes" Version="4.7.0-ci325" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\designer.png" />
+      <Resource Include="Assets\designer.png" />
+      <None Remove="Assets\gear.png" />
+      <None Remove="Assets\IFC_logo_transparent.png" />
+      <Resource Include="Assets\IFC_logo_transparent.png" />
+      <None Remove="Assets\IFC_logo_halo.png" />
+      <Resource Include="Assets\IFC_logo_halo.png" />
+      <None Remove="Assets\maximize_MouseOver.png" />
+      <Resource Include="Assets\maximize_MouseOver.png" />
+      <None Remove="Assets\close_MouseOver.png" />
+      <Resource Include="Assets\close_MouseOver.png" />
+      <None Remove="Assets\hide_MouseOver.png" />
+      <Resource Include="Assets\hide_MouseOver.png" />
+      <None Remove="Assets\hide.png" />
+      <Resource Include="Assets\hide.png" />
+      <None Remove="Assets\maximize.png" />
+      <Resource Include="Assets\maximize.png" />
+      <None Remove="Assets\close.png" />
+      <Resource Include="Assets\close.png" />
+      <None Remove="Assets\setting.png" />
+      <Resource Include="Assets\setting.png" />
+      <None Remove="Assets\glossary.png" />
+      <Resource Include="Assets\glossary.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\IFCTranslator\IFCTranslator.csproj" />
+    </ItemGroup>
+
+</Project>
