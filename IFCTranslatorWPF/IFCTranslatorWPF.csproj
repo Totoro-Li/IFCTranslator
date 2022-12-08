@@ -35,6 +35,8 @@
       <Resource Include="Assets\setting.png" />
       <None Remove="Assets\glossary.png" />
       <Resource Include="Assets\glossary.png" />
+      <None Remove="Assets\upload.png" />
+      <Resource Include="Assets\upload.png" />
     </ItemGroup>
 
     <ItemGroup>

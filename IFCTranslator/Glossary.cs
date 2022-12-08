@@ -3,7 +3,7 @@ using DeepL.Model;
 
 namespace IFCTranslator
 {
-    public class Glossary : TranslatorApiShared
+    public class Glossary : DeepLTranslatorApiShared
     {
         async Task<int> GetGlossaryNum()
         {
@@ -24,9 +24,9 @@ namespace IFCTranslator
         }
     }
 
-    public class GlossaryTest : TranslatorApiShared
+    public class GlossaryTest : DeepLTranslatorApiShared
     {
-        public static async Task TestCreateGlossary(string name, string srcLang, string dstLang)
+        public static async Task TestCreateGlossary(string srcLang, string dstLang)
         {
             if (translator != null)
             {
@@ -34,7 +34,7 @@ namespace IFCTranslator
                 var glossaryName = glossaryCleanup.GlossaryName;
                 try
                 {
-                    var entries = new GlossaryEntries(new[] { ("Hello", "Hallo") });
+                    var entries = new GlossaryEntries(new[] { ("北京大学", "Peking University") });
                     var glossary = glossaryCleanup.Capture(
                         await translator.CreateGlossaryAsync(
                             glossaryName,
@@ -42,6 +42,7 @@ namespace IFCTranslator
                             dstLang,
                             entries));
                     var getResult = await translator.GetGlossaryAsync(glossary.GlossaryId);
+                    Console.WriteLine(getResult.Name);
                 }
                 finally
                 {
@@ -61,7 +62,6 @@ namespace IFCTranslator
             public GlossaryCleanupUtility(Translator translator, string testName)
             {
                 _translator = translator;
-                var uuid = Guid.NewGuid();
                 GlossaryName = testName;
             }
 

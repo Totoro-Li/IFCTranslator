@@ -2,11 +2,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
 using DeepL;
+using static IFCTranslator.FileIO;
 
 
 namespace IFCTranslator
 {
-    public class CoreTranslation : TranslatorApiShared
+    public class DeepLTranslation : DeepLTranslatorApiShared
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,24 +20,25 @@ namespace IFCTranslator
 
         public List<Textline>? Lines { get; set; }
 
-        public static void InitTranslate(string key)
+        public static void InitTranslate()
         {
-            TranslatorApiShared.translator = new Translator(key);
+            var iniFile = new IniFile("config.ini");
+            DeepLTranslatorApiShared.translator = new Translator(iniFile.IniReadValue("DeepL", "AppSecret"));
         }
 
         public async Task Translate(List<Textline> lines)
         {
-            if (translator != null) await TranslatorApi.Translate(translator, SrcLanguage , DstLanguage, lines);
+            if (translator != null) await DeepLTranslatorApi.Translate(translator, SrcLanguage, DstLanguage, lines);
         }
 
-        public CoreTranslation(string apikey)
+        public DeepLTranslation(string apikey)
         {
             translator = new Translator(apikey);
             SrcLanguage = LanguageCode.Chinese;
             DstLanguage = LanguageCode.EnglishAmerican;
         }
 
-        public CoreTranslation(string apikey, string srcLang, string dstLang)
+        public DeepLTranslation(string apikey, string srcLang, string dstLang)
         {
             translator = new Translator(apikey);
             SrcLanguage = srcLang;

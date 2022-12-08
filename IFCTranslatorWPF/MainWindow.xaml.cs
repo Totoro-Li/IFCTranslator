@@ -15,11 +15,11 @@ namespace IFCTranslatorWPF
     /// </summary>
     public static class IFCNavigationService
     {
-        public static readonly Dictionary<int, Page> Bindings = new();
-        public static Page? Current;
-        public static Frame Navframe { get; set; }
+        private static readonly Dictionary<int, Page> Bindings = new();
+        private static Page? Current;
+        private static Frame Navframe { get; set; } = null!;
 
-        public static Snackbar? NavFrameSnackbar { get; set; }
+        private static Snackbar? NavFrameSnackbar { get; set; }
 
         public static void SetNavFrame(Frame navframe)
         {
@@ -79,10 +79,13 @@ namespace IFCTranslatorWPF
             ConsoleHelper.InitConsoleSession();
             InitializeComponent();
             IFCNavigationService.SetNavFrame(Navframe);
-            IFCNavigationService.AddPageBinding(0, new ConfigPage());
-            IFCNavigationService.Navigate(0);
+            IFCNavigationService.AddPageBinding(0, new EditorPage());
+            IFCNavigationService.AddPageBinding(1, new ConfigPage());
+            IFCNavigationService.AddPageBinding(2, new GlossaryPage());
+            IFCNavigationService.AddPageBinding(3, new FilePage());
+            IFCNavigationService.Navigate(1);
         }
-        
+
 
         private void MousedownDrag(object sender, MouseButtonEventArgs e)
         {
@@ -98,7 +101,7 @@ namespace IFCTranslatorWPF
             }
             catch (ArgumentException)
             {
-                NavFrameSnackbar.MessageQueue?.Enqueue("You haven't configured DeepL credentials!", null, null, null, false, true, TimeSpan.FromSeconds(3));
+                NavFrameSnackbar.MessageQueue?.Enqueue("You haven't configured translation api credentials!", null, null, null, false, true, TimeSpan.FromSeconds(3));
             }
         }
 
@@ -120,12 +123,14 @@ namespace IFCTranslatorWPF
                 TooltipEditor.Visibility = Visibility.Collapsed;
                 TooltipConfig.Visibility = Visibility.Collapsed;
                 TooltipGlossary.Visibility = Visibility.Collapsed;
+                TooltipUpload.Visibility = Visibility.Collapsed;
             }
             else
             {
                 TooltipEditor.Visibility = Visibility.Visible;
                 TooltipConfig.Visibility = Visibility.Visible;
                 TooltipGlossary.Visibility = Visibility.Visible;
+                TooltipUpload.Visibility = Visibility.Visible;
             }
         }
 

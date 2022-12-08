@@ -1,0 +1,70 @@
+﻿<Page x:Class="IFCTranslatorWPF.FilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:IFCTranslatorWPF"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Title="Config" Height="840" Width="1200">
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="MaxWidth" Value="150" />
+
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="100,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            Margin="50,50,30,10"
+            Orientation="Horizontal"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch">
+            <ComboBox
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                materialDesign:HintAssist.Hint="Source Language"
+                ItemsSource="{Binding SrcLangList}" SelectedIndex="{Binding SrcLangIndex}"
+                Width="220" />
+            <ComboBox Margin="15,0,0,0"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                materialDesign:HintAssist.Hint="Destination Language"
+                ItemsSource="{Binding DstLangList}" SelectedIndex="{Binding DstLangIndex}"
+                Width="220" />
+            <ComboBox Margin="15,0,0,0"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      materialDesign:HintAssist.Hint="Translation Engine"
+                      ItemsSource="{Binding PlatformList}"
+                      Width="160" >
+                <ComboBoxItem>有道翻译</ComboBoxItem>
+            </ComboBox>
+            <Button
+                Content="Translate" FontSize="20" Margin="40,0,0,0" Click="Translate_OnClick"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Margin" Value="20"></Setter>
+                    <Setter Property="Width" Value="200"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Button Click="Upload_OnClick">Pick File</Button>
+            <Button Click="Upload_OnClick">Check Progress</Button>
+            <Button Click="Download_OnClick" >Download</Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -7,12 +7,12 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Title="Login" Height="840" Width="1200">
-    <Grid>
+    <Grid Margin="120,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="100,50,0,0">
+        <Grid Grid.Row="0" Margin="0,50,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -24,7 +24,7 @@
         <DataGrid Grid.Row="1" Name="GlossaryGrid" Style="{StaticResource MaterialDesignDataGrid}"
                   Background="Transparent" VerticalAlignment="Top"
                   BorderBrush="Gray" ItemsSource="{Binding CourseList}"
-                  Margin="100,50,200,0"
+                  Margin="0,50,200,0"
                   AutoGenerateColumns="False">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">

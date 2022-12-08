@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFCTranslatorWPF", "IFCTran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFCTranslatorConsoleApp", "IFCTranslatorConsoleApp\IFCTranslatorConsoleApp.csproj", "{B8674423-EDE6-4D7E-8E66-75A024DCA42D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileTest", "FileTest\FileTest.csproj", "{E2F57408-05CA-42E4-BF71-B263145BAAAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslateFile", "TranslateFile\TranslateFile.csproj", "{6DA1E64A-E76C-4139-BBA3-AEB170F5874A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{B8674423-EDE6-4D7E-8E66-75A024DCA42D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8674423-EDE6-4D7E-8E66-75A024DCA42D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8674423-EDE6-4D7E-8E66-75A024DCA42D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F57408-05CA-42E4-BF71-B263145BAAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F57408-05CA-42E4-BF71-B263145BAAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F57408-05CA-42E4-BF71-B263145BAAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F57408-05CA-42E4-BF71-B263145BAAAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DA1E64A-E76C-4139-BBA3-AEB170F5874A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DA1E64A-E76C-4139-BBA3-AEB170F5874A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DA1E64A-E76C-4139-BBA3-AEB170F5874A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DA1E64A-E76C-4139-BBA3-AEB170F5874A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

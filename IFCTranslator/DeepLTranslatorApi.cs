@@ -2,27 +2,27 @@
 
 namespace IFCTranslator
 {
-    public class TranslatorApiShared
+    public class DeepLTranslatorApiShared
     {
         public static Translator? translator;
     }
 
-    public static class TranslatorApi
+    public static class DeepLTranslatorApi
     {
         public static async Task Translate(Translator translator, string sc, string dst, List<Textline> lines)
         {
             int i = 0;
-            string line;
-            
+            string? line;
+
             foreach (var item in lines)
             {
-                if (item.Text != String.Empty)
+                line = item.Text;
+                if (!string.IsNullOrEmpty(line)) //Lines in class Textline is defined with nullable text
                 {
-                    line = item.Text;
                     if (line.Contains("{\\an8}"))
                         line = line.Replace("{\\an8}", "");
                     item.TranslatedText = (await translator.TranslateTextAsync(line, sc, dst)).Text;
-                    i += item.Text.Length;
+                    i += line.Length;
                 }
             }
 

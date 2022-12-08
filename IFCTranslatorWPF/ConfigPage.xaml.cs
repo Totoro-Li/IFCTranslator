@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
@@ -7,24 +8,11 @@ namespace IFCTranslatorWPF
     public partial class ConfigPage : Page
     {
         private ConfigPageViewModel _configPageViewModel = new();
+
         public ConfigPage()
         {
             InitializeComponent();
-            this.DataContext= _configPageViewModel;
-        }
-
-        private void DriverPickFile_OnClick(object sender, RoutedEventArgs e)
-        {
-            var fileDialog = new OpenFileDialog();
-            bool? result = fileDialog.ShowDialog();
-            switch (result)
-            {
-                case true:
-                    var file = fileDialog.FileName;
-                    break;
-                default:
-                    break;
-            }
+            this.DataContext = _configPageViewModel;
         }
 
         private void Go_BtnClick(object sender, RoutedEventArgs e)
@@ -32,8 +20,9 @@ namespace IFCTranslatorWPF
             IFCNavigationService.SnackbarMessage("Empty credential field!");
         }
     }
+
     public class ConfigPageViewModel : ViewModelBase
     {
-        public string Authkey { get; set; }
+        public string Authkey { get; set; } = String.Empty;
     }
 }
